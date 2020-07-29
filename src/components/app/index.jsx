@@ -6,7 +6,7 @@ class App extends React.Component {
     render(){
         return (
             <div>
-                <img src={logo} />
+                <img src={logo} alt=""/>
                 <sapan>我是app</sapan></div>
         );
     }
