@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App, {App2} from './components/app';
-import EventBind from './components/event-bind';
-import AntdMobile1 from './components/antd-mobile';
-import Router from './components/router';
-import PropsDefault from './components/props-default';
+import EventBindApp from './components/event-bind-app';
+import AntdMobileApp from './components/antd-mobile-app';
+import PropsDefaultApp from './components/props-default-app';
+import RouterApp from './components/router-app';
 
 ReactDOM.render(
-    <PropsDefault/>,
+    <RouterApp/>,
     document.getElementById('root')
 );

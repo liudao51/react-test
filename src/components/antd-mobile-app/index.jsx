@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd-mobile';
 
-class AntdMobile1 extends React.Component {
+class AntdMobileApp extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -15,4 +15,4 @@ class AntdMobile1 extends React.Component {
     }
 }
 
-export default AntdMobile1;
+export default AntdMobileApp;

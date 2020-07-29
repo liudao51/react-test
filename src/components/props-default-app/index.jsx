@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class PropsDefault extends React.Component {
+class PropsDefaultApp extends React.Component {
     render() {
         return (
             <div>
@@ -63,5 +63,4 @@ class PropsDetail2 extends React.Component {
     }
 }
 
-
-export default PropsDefault;
+export default PropsDefaultApp;
