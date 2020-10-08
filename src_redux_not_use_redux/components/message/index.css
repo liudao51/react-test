@@ -1,0 +1,9 @@
+.message {
+    font-size: 18px;
+}
+
+.message-input,
+.message-list {
+    margin: 0px 5px;
+    font-size: 18px;
+}
