@@ -48,7 +48,7 @@ class EventBindApp extends React.Component {
         });
     }
 
-    //点击事件4
+    //点击事件4(匿名函数+箭头函数)
     handleClick4 = (e) => {
         console.log(this);
         console.log(e);
@@ -63,8 +63,8 @@ class EventBindApp extends React.Component {
                 <button title={"点击我1"} onClick={this.handleClick1.bind(this)}>点击我1</button>
                 <button title={"点击我2"} onClick={this.handleClick2}>点击我2（推荐）</button>
                 <button title={"点击我3"} onClick={(e) => this.handleClick3(e)}>点击我3</button>
-                <button title={"点击我4"} onClick={this.handleClick4}>点击我4（用得最多）</button>
-                <button title={"点击我5"} onClick={this.handleClick5}>点击我5(推荐)</button>
+                <button title={"点击我4"} onClick={this.handleClick4}>点击我4（推荐-用得最多）</button>
+                <button title={"点击我5"} onClick={this.handleClick5}>点击我5</button>
                 <br/><br/>
                 <span>{this.state.tips}</span>
             </div>
