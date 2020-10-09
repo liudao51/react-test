@@ -1,45 +1,46 @@
 import React from 'react';
 import './index.css';
+import PropTypes from 'prop-types';
+import {counterDecrement, counterIncrement} from '../../redux/actions';
 
 class Counter extends React.Component {
+
+    //把react原生的this.state,this.setState({newState对象})转换为通过外部props属性对象(this.props.state,this.props.dispatch({action对象}))
+    static propTypes = {
+        state: PropTypes.object.isRequired,
+        dispatch: PropTypes.func.isRequired
+    }
+
     constructor(props) {
         super(props);
-
-        //初始化值
-        this.state = {
-            count: 0
-        }
     }
 
     //加
     increment = () => {
         //下拉列表选择的number值
         const number = this.numberSelect.value * 1;
-        //旧的count值
-        const count = this.state.count;
-        //新的count值
-        this.setState({count: count + number});
+        //调用this.props.dispatch更新store中的值（即相当于react中的this.setState({xxx:aaa})）
+        this.props.dispatch(counterIncrement(number));
     }
 
     //减
     decrement = () => {
         const number = this.numberSelect.value * 1;
-        const count = this.state.count;
-        this.setState({count: count - number});
+        this.props.dispatch(counterDecrement(number));
     }
 
     //异步加
     asyncIncrement = () => {
         const number = this.numberSelect.value * 1;
-        const count = this.state.count;
         setTimeout(() => {
-            this.setState({count: count + number});
+            this.props.dispatch(counterIncrement(number));
         }, 1000);
     }
 
     //渲染
     render() {
-        const {count} = this.state;
+        //调用this.props.state().xxx获得store中的值（即相当于react中的this.state.xxx）
+        const {count} = this.props.state;
 
         return (
             <div className="counter">
