@@ -1,0 +1,9 @@
+.counter {
+    font-size: 18px;
+}
+
+.number-select,
+.counter-button {
+    margin: 0px 5px;
+    font-size: 18px;
+}
