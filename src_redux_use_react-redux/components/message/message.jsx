@@ -53,7 +53,6 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    //messageSendMsgDispatch: (msg) => dispatch(messageSendMsgAction(msg))
     messageSendMsgDispatch: (msg) => dispatch(messageSendMsgAction(msg))
 });
 

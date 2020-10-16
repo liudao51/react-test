@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css'
 import PropTypes from "prop-types";
-import {messageSendMsg} from '../../redux/actions';
+import {messageSendMsgAction} from '../../redux/actions';
 
 class Message extends React.Component {
 
@@ -21,12 +21,12 @@ class Message extends React.Component {
         this.msgInput.value = ''; //获得值后清空消息输入框
         this.msgInput.focus();
         //调用this.props.store.dispatch更新store中的值（即相当于react中的this.setState({xxx:aaa})）
-        this.props.dispatch(messageSendMsg(newMsg));
+        this.props.dispatch(messageSendMsgAction(newMsg));
     }
 
     //渲染
     render() {
-        const {allMsg} = this.props.state;
+        const allMsg = this.props.state.messageAllMsg;
 
         return (
             <div className="message">

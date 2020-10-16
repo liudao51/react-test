@@ -1,15 +1,14 @@
 import React from 'react';
 import './index.css'
 import PropTypes from "prop-types";
-import {connect} from 'react-redux';
 import {messageSendMsgAction} from '../../redux/actions';
 
 class Message extends React.Component {
 
     //把react原生的this.state,this.setState({newState})转换为通过外部props属性对象(this.props.state,this.props.dispatch({action}))来处理状态数据
     static propTypes = {
-        messageAllMsg: PropTypes.array.isRequired,
-        messageSendMsgDispatch: PropTypes.func.isRequired
+        state: PropTypes.object.isRequired,
+        dispatch: PropTypes.func.isRequired
     }
 
     constructor(props) {
@@ -22,12 +21,12 @@ class Message extends React.Component {
         this.msgInput.value = ''; //获得值后清空消息输入框
         this.msgInput.focus();
         //调用this.props.store.dispatch更新store中的值（即相当于react中的this.setState({xxx:aaa})）
-        this.props.messageSendMsgDispatch(newMsg);
+        this.props.dispatch(messageSendMsgAction(newMsg));
     }
 
     //渲染
     render() {
-        const allMsg = this.props.messageAllMsg;
+        const allMsg = this.props.state.messageAllMsg;
 
         return (
             <div className="message">
@@ -47,14 +46,4 @@ class Message extends React.Component {
     }
 }
 
-//生成容器组件：通过redux的connect方法连接store与用户组件(即使用户组能够与store进行通讯)
-const mapStateToProps = (state, ownProps) => ({
-    messageAllMsg: state.messageAllMsg
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    //messageSendMsgDispatch: (msg) => dispatch(messageSendMsgAction(msg))
-    messageSendMsgDispatch: (msg) => dispatch(messageSendMsgAction(msg))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Message);
+export default Message;

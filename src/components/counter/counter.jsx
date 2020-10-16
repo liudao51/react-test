@@ -1,16 +1,14 @@
 import React from 'react';
 import './index.css';
 import PropTypes from 'prop-types';
-import connect from "react-redux/es/connect/connect";
 import {counterDecrementAction, counterIncrementAction} from '../../redux/actions';
 
 class Counter extends React.Component {
 
     //把react原生的this.state,this.setState({newState对象})转换为通过外部props属性对象(this.props.state,this.props.dispatch({action对象}))
     static propTypes = {
-        counterCount: PropTypes.number.isRequired,
-        counterIncrementDispatch: PropTypes.func.isRequired,
-        counterDecrementDispatch: PropTypes.func.isRequired
+        state: PropTypes.object.isRequired,
+        dispatch: PropTypes.func.isRequired
     }
 
     constructor(props) {
@@ -22,27 +20,27 @@ class Counter extends React.Component {
         //下拉列表选择的number值
         const number = this.numberSelect.value * 1;
         //调用this.props.dispatch更新store中的值（即相当于react中的this.setState({xxx:aaa})）
-        this.props.counterIncrementDispatch(number);
+        this.props.dispatch(counterIncrementAction(number));
     }
 
     //减
     decrement = () => {
         const number = this.numberSelect.value * 1;
-        this.props.counterDecrementDispatch(number);
+        this.props.dispatch(counterDecrementAction(number));
     }
 
     //异步加
     asyncIncrement = () => {
         const number = this.numberSelect.value * 1;
         setTimeout(() => {
-            this.props.counterIncrementDispatch(number);
+            this.props.dispatch(counterIncrementAction(number));
         }, 1000);
     }
 
     //渲染
     render() {
         //调用this.props.state().xxx获得store中的值（即相当于react中的this.state.xxx）
-        const count = this.props.counterCount;
+        const count = this.props.state.counterCount;
 
         return (
             <div className="counter">
@@ -65,16 +63,5 @@ class Counter extends React.Component {
     }
 }
 
-
-//生成容器组件：通过redux的connect方法连接store与用户组件(即使用户组能够与store进行通讯)
-const mapStateToProps = (state, ownProps) => ({
-    counterCount: state.counterCount
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    counterIncrementDispatch: (number) => dispatch(counterIncrementAction(number)),
-    counterDecrementDispatch: (number) => dispatch(counterDecrementAction(number)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default Counter;
 

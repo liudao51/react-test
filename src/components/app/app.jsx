@@ -1,9 +1,8 @@
 import React from 'react';
 import Counter from "../counter/counter";
 import Message from "../message/message";
-import store from "../../redux/store";
-import {Provider} from 'react-redux';
 import './index.css';
+import store from "../../../src/redux/store";
 
 class App extends React.Component {
     constructor(props) {
@@ -12,16 +11,14 @@ class App extends React.Component {
 
     render() {
         return (
-            <Provider store={store}>
-                <div className="app-main">
-                    {/*
-                        //调用this.props.store.getState().xxx获得store中的值（即相当于react中的this.state.xxx）
-                        //调用this.props.store.dispatch更新store中的值（即相当于react中的this.setState({xxx:aaa})）
-                    */}
-                    <Counter />
-                    <Message />
-                </div>
-            </Provider>
+            <div className="app-main">
+                {/*
+                    //调用this.props.store.getState().xxx获得store中的值（即相当于react中的this.state.xxx）
+                    //调用this.props.store.dispatch更新store中的值（即相当于react中的this.setState({xxx:aaa})）
+                */}
+                <Counter state={store.getState()} dispatch={store.dispatch}/>
+                <Message state={store.getState()} dispatch={store.dispatch}/>
+            </div>
         );
     }
 }

@@ -5,15 +5,15 @@
 import {combineReducers} from 'redux';
 import {COUNTER_DECREMENT, COUNTER_INCREMENT, MESSAGE_SEND_MSG} from './action-types';
 
-//管理count状态（【方法名需要跟要管理的状态同名】，即count）
-const initCount = 0;
+//管理counterCount状态（【方法名需要跟要管理的状态同名】，即count）
+const initCounterCount = 0;
 
 /**
  * @param preState: 旧的store中存储的状态。
  * @param action: action（里面包含action.type,action.data）为即将要用于更新store中的state的。
  * @return nextState: 新的state。
  */
-function count(preState = initCount, action) {
+function counterCount(preState = initCounterCount, action) {
     let nextState = preState; //新的状态
     switch (action.type) {
         case COUNTER_INCREMENT:
@@ -31,10 +31,10 @@ function count(preState = initCount, action) {
     return nextState;  //返回新的状态
 }
 
-//管理allMsg状态（【方法名需要跟要管理的状态同名】，即allMsg）
-const initAllMsg = [];
+//管理messageAllMsg状态（【方法名需要跟要管理的状态同名】，即allMsg）
+const initMessageAllMsg = [];
 
-function allMsg(preState = initAllMsg, action) {
+function messageAllMsg(preState = initMessageAllMsg, action) {
     let nextState = preState; //新的状态
     switch (action.type) {
         case MESSAGE_SEND_MSG:
@@ -51,6 +51,6 @@ function allMsg(preState = initAllMsg, action) {
 
 //合并多个reducer
 export default combineReducers({
-    count,
-    allMsg
+    counterCount,
+    messageAllMsg
 });

@@ -4,8 +4,8 @@
  */
 import {COUNTER_INCREMENT, COUNTER_DECREMENT, MESSAGE_SEND_MSG} from './action-types';
 
-export const counterIncrement = (number) => ({type: COUNTER_INCREMENT, data: number});
+export const counterIncrementAction = (number) => ({type: COUNTER_INCREMENT, data: number});
 
-export const counterDecrement = (number) => ({type: COUNTER_DECREMENT, data: number});
+export const counterDecrementAction = (number) => ({type: COUNTER_DECREMENT, data: number});
 
-export const messageSendMsg = (msg) => ({type: MESSAGE_SEND_MSG, data: msg});
+export const messageSendMsgAction = (msg) => ({type: MESSAGE_SEND_MSG, data: msg});

@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import PropTypes from 'prop-types';
-import {counterDecrement, counterIncrement} from '../../redux/actions';
+import {counterDecrementAction, counterIncrementAction} from '../../redux/actions';
 
 class Counter extends React.Component {
 
@@ -20,27 +20,27 @@ class Counter extends React.Component {
         //下拉列表选择的number值
         const number = this.numberSelect.value * 1;
         //调用this.props.dispatch更新store中的值（即相当于react中的this.setState({xxx:aaa})）
-        this.props.dispatch(counterIncrement(number));
+        this.props.dispatch(counterIncrementAction(number));
     }
 
     //减
     decrement = () => {
         const number = this.numberSelect.value * 1;
-        this.props.dispatch(counterDecrement(number));
+        this.props.dispatch(counterDecrementAction(number));
     }
 
     //异步加
     asyncIncrement = () => {
         const number = this.numberSelect.value * 1;
         setTimeout(() => {
-            this.props.dispatch(counterIncrement(number));
+            this.props.dispatch(counterIncrementAction(number));
         }, 1000);
     }
 
     //渲染
     render() {
         //调用this.props.state().xxx获得store中的值（即相当于react中的this.state.xxx）
-        const {count} = this.props.state;
+        const count = this.props.state.counterCount;
 
         return (
             <div className="counter">
@@ -64,3 +64,4 @@ class Counter extends React.Component {
 }
 
 export default Counter;
+
